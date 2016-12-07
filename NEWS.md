@@ -5,13 +5,15 @@ shiny 0.14.2.9000
 
 ### Minor new features and improvements
 
-* Address [#1486](https://github.com/rstudio/shiny/issue/1486) by adding a new argument to `observeEvent` and `eventReactive`, called `skipFirst` (defaults to `FALSE` for backwards compatibility). When set to `TRUE`, the action will not be triggered the first time (only the subsequent ones) that the observe/reactive is run. ([#1494](https://github.com/rstudio/shiny/pull/1494))
+* Addressed [#1486](https://github.com/rstudio/shiny/issue/1486) by adding a new argument to `observeEvent` and `eventReactive`, called `skipFirst` (defaults to `FALSE` for backwards compatibility). When set to `TRUE`, the action (i.e. the second argument -- `handlerExpr` and `valueExpr`, respectively) will not be triggered the first time (only the subsequent ones) that the observe/reactive is run. In other words, `skipFirst = TRUE` ensures that the `observeEvent` (or `eventReactive`) is *never* run right away (even if `ignoreNULL = FALSE`, or alternatively, if the first argument, `eventExpr`, is non-null from the beginning). Here's a handy table:
+
+([#1494](https://github.com/rstudio/shiny/pull/1494))
 
 * Added support for injecting JavaScript code when the `shiny.testmode` option is set to `TRUE`. This makes it possible to record test events interactively. ([#1464]https://github.com/rstudio/shiny/pull/1464))
 
 ### Bug fixes
 
-* Fix [#1438](https://github.com/rstudio/shiny/issue/1438): `unbindAll()` should not be called when inserting content with `insertUI()` ([#1449](https://github.com/rstudio/shiny/pull/1449))
+* Fixed [#1438](https://github.com/rstudio/shiny/issue/1438): `unbindAll()` should not be called when inserting content with `insertUI()` ([#1449](https://github.com/rstudio/shiny/pull/1449))
 
 * Fixed bug causing `<meta>` tags associated with HTML dependencies of Shiny R Markdown files to be rendered incorrectly. ([#1463](https://github.com/rstudio/shiny/pull/1463))
 
