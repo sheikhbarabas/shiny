@@ -1823,10 +1823,7 @@ eventReactive <- function(eventExpr, valueExpr,
       req(FALSE)
     }
 
-    req(
-      !ignoreNULL || !isNullEvent(e),
-      message = FALSE
-    )
+    req(!ignoreNULL || !isNullEvent(e))
 
     isolate(handlerFunc())
   }, label = label, domain = domain, ..stacktraceon = FALSE))
